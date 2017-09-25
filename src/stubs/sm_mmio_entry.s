@@ -53,5 +53,17 @@ __sm_exit:
     br r7
 
 .Lerror:
-    clr &__sm_entry             ; raise memory violation
-    jmp .Lerror
+    br #__sm_mmio_violation  ; raise exec violation
+
+    .section ".text"
+    .align 2
+    .global __sm_mmio_viol
+    .type __sm_mmio_viol,@function
+
+    ; go out of the protected domain and jump back in to an illegal destination
+
+__sm_mmio_violation:
+    br #.Lerror
+
+
+  

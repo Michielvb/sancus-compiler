@@ -57,8 +57,8 @@ __sm_exit:
 
     .section ".text"
     .align 2
-    .global __sm_mmio_viol
-    .type __sm_mmio_viol,@function
+    .global __sm_mmio_violation
+    .type __sm_mmio_violation,@function
 
     ; go out of the protected domain and jump back in to an illegal destination
 
